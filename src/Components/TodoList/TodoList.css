@@ -1,0 +1,7 @@
+.todo_list {
+ 
+    max-height: 50vh;
+    overflow-y: scroll;
+}::-webkit-scrollbar {
+    display: none;
+  }

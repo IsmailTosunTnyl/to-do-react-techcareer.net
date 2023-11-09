@@ -1,27 +1,42 @@
-import React from 'react'
+import {React,useEffect} from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Todoİtem from './Todoİtem';
 import { Button } from 'react-bootstrap';
+import { useSelector,useDispatch } from "react-redux";
+import { selectAllTodos,fetchTodos,selectTodoError,selectTodoStatus } from '../../Redux/todoSlicer';
+import './TodoList.css';
 
 function TodoList() {
+
+
+  console.log(' Render TodoList');
+  const data = useSelector(selectAllTodos);
+  const status = useSelector(selectTodoStatus);
+  const error = useSelector(selectTodoError);
+
   return (
      <>
-    <div>
-        <Todoİtem/>
+     
+    <div className='todo_list'>
+       {status ==='succeeded' && !error && data.filter((todo) => todo.visible).map((todo) => (
+        <Todoİtem key={todo.id} todo={todo} />
+        ))}
     </div>
     <Container className='mt-3' style={{padding:'0'}}>
         <Row style={{display:'flex',justifyContent:'space-between',padding:'0'}}>
-            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> TEST Button</Button> </Col>
-            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> TEST Button</Button> </Col>
-
-
+            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> Delete Done Task</Button> </Col>
+            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> Delete All Task</Button> </Col>
         </Row>
 
     </Container>
     </>
   )
+  /*
+  return(
+    <div>test</div>
+  )*/
 }
 
 export default TodoList
