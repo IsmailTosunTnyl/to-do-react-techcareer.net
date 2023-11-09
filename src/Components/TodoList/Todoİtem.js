@@ -31,27 +31,23 @@ function Todoİtem({todo}) {
      
 
       {  !edit && 
-      <>
-      <h2>{editText}</h2>
-      <div style={{display:'flex',justifyContent:'flex-end',width:'25%'}} >
-
-        <input type='checkbox' checked={todo.status} style={{transform:'scale(2)'}} onChange={updateTodo}></input>
-        <MdModeEditOutline onClick={() => setEdit(true)} style={{fontSize:'1.7rem',color:'orange', height:"100%", marginLeft:'0.8rem'}}/>
-        <MdDelete onClick={()=> dispatch(deleteTodoAsync(todo))} style={{fontSize:'1.7rem',color:'red', height:"100%",marginLeft:'0.4rem'}}/>
-
-      </div></>  }
+       <>
+         <h2>{editText}</h2>
+         <div style={{display:'flex',justifyContent:'flex-end',width:'25%'}} >
+           <input type='checkbox' checked={todo.status} style={{transform:'scale(2)'}} onChange={updateTodo}></input>
+           <MdModeEditOutline onClick={() => setEdit(true)} style={{fontSize:'1.7rem',color:'orange', height:"100%", marginLeft:'0.8rem'}}/>
+           <MdDelete onClick={()=> dispatch(deleteTodoAsync(todo))} style={{fontSize:'1.7rem',color:'red', height:"100%",marginLeft:'0.4rem'}}/>
+         </div>
+       </>  
+      }
 
       { edit &&
-            <>
+        <>
             <input type='text' value={editText} onChange={(e)=> setEditText(e.target.value)}></input>
             <div style={{display:'flex',justifyContent:'flex-end',width:'25%'}} >
-      
-         
               <GiConfirmed style={{fontSize:'1.7rem',color:'green', height:"100%", marginLeft:'0.8rem'}} onClick={updateTodo} ></GiConfirmed>
-      
-            </div></>
-        
-      
+            </div>
+        </>   
      }
 
     </Card.Body>

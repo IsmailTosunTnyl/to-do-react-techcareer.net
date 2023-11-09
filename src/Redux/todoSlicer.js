@@ -41,6 +41,15 @@ export const deleteTodoAsync = createAsyncThunk('todos/deleteTodoAsync', async (
     return response.data;
 });
 
+export const deleteAllTodoAsync = createAsyncThunk('todos/deleteAllTodoAsync', async (payload) => {
+    const response = await axios.delete(`${POSTS_URL}`);
+    return response.data;
+});
+
+export const deleteDoneTodoAsync = createAsyncThunk('todos/deleteDoneTodoAsync', async (payload) => {
+    const response = await axios.delete(`${POSTS_URL}/done`);
+    return response.data;
+});
 
 
 const todoSlice = createSlice({
@@ -72,6 +81,8 @@ const todoSlice = createSlice({
                     todo.visible = false;
             })
         },
+
+    
         
   
       
@@ -110,6 +121,13 @@ const todoSlice = createSlice({
         },
         [deleteTodoAsync.fulfilled]: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+        },
+        [deleteAllTodoAsync.fulfilled]: (state, action) => {
+            state.todos = [];
+        },
+
+        [deleteDoneTodoAsync.fulfilled]: (state, action) => {
+            state.todos = state.todos.filter((todo) => todo.status !== true);
         },
     
 

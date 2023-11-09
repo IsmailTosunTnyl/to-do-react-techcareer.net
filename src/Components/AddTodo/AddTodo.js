@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, InputGroup, Form } from 'react-bootstrap';
 import {BiSolidBookBookmark} from 'react-icons/bi'
 import { useState } from 'react';
-import { addTodoAsync } from '../../Redux/todoSlicer';
+import { addTodoAsync,allTodos } from '../../Redux/todoSlicer';
 import { useDispatch } from 'react-redux';
 
 
@@ -19,6 +19,7 @@ function AddTodo() {
     console.log(todo);
     setToDoText('');
     dispatch(addTodoAsync(todo));
+    dispatch(allTodos());
   
   };
 

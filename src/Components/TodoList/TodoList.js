@@ -5,12 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Todoİtem from './Todoİtem';
 import { Button } from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
-import { selectAllTodos,fetchTodos,selectTodoError,selectTodoStatus } from '../../Redux/todoSlicer';
+import { selectAllTodos,selectTodoError,selectTodoStatus,deleteAllTodoAsync,deleteDoneTodoAsync } from '../../Redux/todoSlicer';
 import './TodoList.css';
 
 function TodoList() {
 
-
+  const dispatch = useDispatch();
   console.log(' Render TodoList');
   const data = useSelector(selectAllTodos);
   const status = useSelector(selectTodoStatus);
@@ -26,8 +26,8 @@ function TodoList() {
     </div>
     <Container className='mt-3' style={{padding:'0'}}>
         <Row style={{display:'flex',justifyContent:'space-between',padding:'0'}}>
-            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> Delete Done Task</Button> </Col>
-            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" style={{padding: '0.4rem',width:'90%'}}> Delete All Task</Button> </Col>
+            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" onClick={() => dispatch(deleteDoneTodoAsync())} style={{padding: '0.4rem',width:'90%'}}> Delete Done Task</Button> </Col>
+            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" onClick={() => dispatch(deleteAllTodoAsync())} style={{padding: '0.4rem',width:'90%'}}> Delete All Task</Button> </Col>
         </Row>
 
     </Container>
