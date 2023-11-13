@@ -9,15 +9,11 @@ import AddTodo from "./Components/AddTodo/AddTodo";
 import TodoListButtons from "./Components/TodoListButtons/TodoListButtons";
 import TodoList from "./Components/TodoList/TodoList";
 import {React,useEffect} from 'react'
-import { allTodos } from "./Redux/todoSlicer";
-import { useDispatch } from "react-redux";
+
 
 function App() {
   console.log(' Render App');
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(allTodos());
-  }, [dispatch]);
+
   return (
     <div>
      <Container style={{maxWidth:"60%"}}>
