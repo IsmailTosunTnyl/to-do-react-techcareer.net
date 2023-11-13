@@ -14,7 +14,6 @@ const initialState = {
     todos: [],
     status: 'idle',
     error: null,
-    visible:true,
 };
 
 
