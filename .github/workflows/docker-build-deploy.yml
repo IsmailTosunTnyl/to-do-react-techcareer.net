@@ -43,9 +43,5 @@ jobs:
       
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${HOSTNAME} 
+          ssh -o StrictHostKeyChecking=no -i private_key ${HOSTNAME} "docker stop reacttodo-techcareer || true && docker rm reacttodo-techcareer || true && docker rmi ismailtosun/reacttodo-techcareer || true && docker run -d -p 4016:80 --name reacttodo-techcareer ismailtosun/reacttodo-techcareer:latest"
 
-            docker stop reacttodo-techcareer || true
-            docker rm reacttodo-techcareer || true
-            docker rmi ismailtosun/reacttodo-techcareer || true
-            docker run -d -p 4016:80 --name reactapp ismailtosun/reacttodo-techcareer:latest
