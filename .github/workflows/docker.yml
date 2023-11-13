@@ -28,7 +28,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push ismailtosun/reacttodo-techcareer:latest && docker push ismailtosun/reacttodo-techcareer:${{ env.TIMESTAMP_TAG }}
   deploy-aws:
-    runs-on: [aws]
+    runs-on: ubuntu-latest
     needs: build-and-push
     
     steps:
