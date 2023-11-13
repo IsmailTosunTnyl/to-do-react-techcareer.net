@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const POSTS_URL = 'http://localhost:8082/api/todo';
+const POSTS_URL = 'http://ismailtosun.net:4015/api/todo';
 
 
 
