@@ -15,7 +15,7 @@ jobs:
       - name: deploy to AWS
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_URL }} '
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_URL }} 
 
           docker stop reacttodo-techcareer || true
           docker rm reacttodo-techcareer || true
