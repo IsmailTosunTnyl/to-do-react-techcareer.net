@@ -22,8 +22,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ismailtosun/springtodo-techcareer:latest .
-          docker tag ismailtosun/springtodo-techcareer:latest ismailtosun/springtodo-techcareer:${{ env.TIMESTAMP_TAG }}
+          docker build -t ismailtosun/reacttodo-techcareer:latest .
+          docker tag ismailtosun/reacttodo-techcareer:latest ismailtosun/reacttodo-techcareer:${{ env.TIMESTAMP_TAG }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push ismailtosun/springtodo-techcareer:latest && docker push ismailtosun/springtodo-techcareer:${{ env.TIMESTAMP_TAG }}
+        run: docker push ismailtosun/reacttodo-techcareer:latest && docker push ismailtosun/reacttodo-techcareer:${{ env.TIMESTAMP_TAG }}
