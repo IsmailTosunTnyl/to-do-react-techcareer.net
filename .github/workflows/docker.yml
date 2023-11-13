@@ -27,3 +27,17 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push ismailtosun/reacttodo-techcareer:latest && docker push ismailtosun/reacttodo-techcareer:${{ env.TIMESTAMP_TAG }}
+  deploy-aws:
+    runs-on: [aws]
+    needs: build-and-push
+    
+    steps:
+      - name: deploy to AWS
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.SSH_URL }} '
+
+          docker stop reacttodo-techcareer || true
+          docker rm reacttodo-techcareer || true
+          docker rmi ismailtosun/reacttodo-techcareer || true
+          docker run -d -p 4016:80 --name reactapp ismailtosun/reacttodo-techcareer:latest
