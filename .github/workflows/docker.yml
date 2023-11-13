@@ -1,0 +1,29 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set timestamp tag
+        id: set-timestamp
+        run: echo "TIMESTAMP_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build -t ismailtosun/springtodo-techcareer:latest .
+          docker tag ismailtosun/springtodo-techcareer:latest ismailtosun/springtodo-techcareer:${{ env.TIMESTAMP_TAG }}
+
+      - name: Push Docker image to Docker Hub
+        run: docker push ismailtosun/springtodo-techcareer:latest && docker push ismailtosun/springtodo-techcareer:${{ env.TIMESTAMP_TAG }}
