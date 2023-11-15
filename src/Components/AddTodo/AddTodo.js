@@ -7,16 +7,19 @@ import { useDispatch } from 'react-redux';
 
 
 function AddTodo() {
-  console.log(' Render AddTodo');
+  console.log('Render AddTodo');
   const [toDoText, setToDoText] = useState('');
   const dispatch = useDispatch();
+
   const addTodo = (e) => {
+
     e.preventDefault();
+
     const todo = {
       content: toDoText,
       status: false,
     };
-    console.log(todo);
+  
     setToDoText('');
     dispatch(addTodoAsync(todo));
     dispatch(allTodos());
