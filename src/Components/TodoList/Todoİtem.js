@@ -32,7 +32,7 @@ function Todoİtem({todo}) {
 
       {  !edit && 
        <>
-         <h2>{editText}</h2>
+       <h2 style={{ textDecoration: todo.status ? 'line-through' : 'none' }}>{editText}</h2>
          <div style={{display:'flex',justifyContent:'flex-end',width:'25%'}} >
            <input type='checkbox' checked={todo.status} style={{transform:'scale(2)'}} onChange={updateTodo}></input>
            <MdModeEditOutline onClick={() => setEdit(true)} style={{fontSize:'1.7rem',color:'orange', height:"100%", marginLeft:'0.8rem'}}/>
