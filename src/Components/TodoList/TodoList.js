@@ -16,6 +16,20 @@ function TodoList() {
   const status = useSelector(selectTodoStatus);
   const error = useSelector(selectTodoError);
 
+  const deleteAllTodos = () => {
+    if (window.confirm('Are you sure you want to delete all tasks?')){
+      dispatch(deleteAllTodoAsync());
+    }
+  }
+
+  const deleteDoneTodos = () => {
+    if (window.confirm('Are you sure you want to delete all done tasks?')){
+      dispatch(deleteDoneTodoAsync());
+    }
+  }
+
+
+
   return (
      <>
      
@@ -26,17 +40,14 @@ function TodoList() {
     </div>
     <Container className='mt-3' style={{padding:'0'}}>
         <Row style={{display:'flex',justifyContent:'space-between',padding:'0'}}>
-            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" onClick={() => dispatch(deleteDoneTodoAsync())} style={{padding: '0.4rem',width:'90%'}}> Delete Done Task</Button> </Col>
-            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" onClick={() => dispatch(deleteAllTodoAsync())} style={{padding: '0.4rem',width:'90%'}}> Delete All Task</Button> </Col>
+            <Col style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}  > <Button variant="danger" size="lg" onClick={deleteDoneTodos} style={{padding: '0.4rem',width:'90%'}}> Delete Done Task</Button> </Col>
+            <Col style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}> <Button variant="danger" size="lg" onClick={deleteAllTodos} style={{padding: '0.4rem',width:'90%'}}> Delete All Task</Button> </Col>
         </Row>
 
     </Container>
     </>
   )
-  /*
-  return(
-    <div>test</div>
-  )*/
+
 }
 
 export default TodoList
