@@ -1,6 +1,6 @@
 # To-Do List Uygulaması
 
-Bu basit To-Do List uygulaması, React ve Spring kullanılarak geliştirilmiştir. Backend tarafı için [bu linkteki reposu](link-to-backend-repo) ziyaret edebilirsiniz.
+Bu basit To-Do List uygulaması, React ve Spring kullanılarak geliştirilmiştir. Backend tarafı için [bu linkteki reposu](https://github.com/IsmailTosunTnyl/to-do-spring-techcareer.net) ziyaret edebilirsiniz.
 
 ## Özellikler
 
@@ -13,12 +13,22 @@ Bu basit To-Do List uygulaması, React ve Spring kullanılarak geliştirilmişti
 ## Teknolojiler
 
 - **Frontend:** React kullanılmıştır. State yönetimi için Redux tercih edilmiştir.
-- **Backend:** Spring framework kullanılmıştır. [https://github.com/IsmailTosunTnyl/to-do-spring-techcareer.net]: <backend-repo-link>
+- **Backend:** Spring framework kullanılmıştır.
+- Her iki repo içinde Docker dosyaları hazırlanmış, Github Actions kulanılarak otomatik testlerin çalıştırılması ve sunucuya deploy edilmesi sağlanmıştır
+
+
+Live Demo
+Canlı demo için [buraya](http://ismailtosun.net:4016/) tıklayın.
 
 ## Kurulum
+### Docker Kullanarak
+1.Docker Container'dosyasını [buraya](https://hub.docker.com/repository/docker/ismailtosun/reacttodo-techcareer/) tıklayarak indirin yada
+2.Bu komutu çalıştırın ve istediğiniz port'u belirtin 
+  `docker run -p 3000:3000 ismailtosun/reacttodo-techcareer:lastest`
 
+### Proje Dosyalarını Kulanarak
 1. Proje dosyalarını bilgisayarınıza kopyalayın.
-2. Frontend klasörüne gidin: `cd frontend`
+2. Frontend klasörüne gidin: `cd to-do-react-techcareer.net`
 3. Gerekli bağımlılıkları yüklemek için: `npm install`
 4. Uygulamayı başlatmak için: `npm start`
 
@@ -43,5 +53,4 @@ npm install
 npm start
 Bu adımları takip ederek uygulamayı yerel ortamda çalıştırabilirsiniz.
 
-Live Demo
-Canlı demo için [buraya]: <buraya> tıklayın.
+
